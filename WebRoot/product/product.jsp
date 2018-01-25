@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="/comp/head.jsp"%>
+<%@include file="/function/main.jsp"%>
 <table align="center">
    <tr><td>商品名称：</td><td>${product.describe}</td></tr>
    <tr><td>商品售价：</td><td>${product.custom_price}</td></tr>

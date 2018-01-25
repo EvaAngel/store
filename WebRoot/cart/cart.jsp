@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<%@include file="/comp/head.jsp" %>
+<%@include file="/function/main.jsp"%>
 <body>
   <table align="center" width="50%">
     <tr><td>商品名称</td><td>商品个数</td><td>商品总价格</td><td>删除商品</td></tr>
@@ -21,7 +21,10 @@
         </tr>
         <br>
    </c:forEach>
-   </c:if> 
+   </c:if>
+
    </table>
+  <!--添加提交订单按钮 需求：点击提交订单按钮，订单成功提交并重定向到订单详情页面 -->
+  <input type="button" value="提交订单" align="center" onclick="location.href='${pageContext.request.contextPath}/order?method=addOrder'">
 </body>
 </html>

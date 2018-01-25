@@ -17,6 +17,14 @@
     <servlet-name>category</servlet-name>
     <url-pattern>/category</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>order</servlet-name>
+    <servlet-class>com.store.servlet.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>order</servlet-name>
+    <url-pattern>/order</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/404.jsp</location>

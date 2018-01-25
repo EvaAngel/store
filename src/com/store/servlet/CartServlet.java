@@ -22,29 +22,29 @@ public class CartServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     public String add2Cart(HttpServletRequest req, HttpServletResponse resp)
     {
-    	//Ê×ÏÈÅÐ¶ÏÊÇ·ñµÇÂ½
+    	//ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Â½
     	if(req.getSession().getAttribute("user")!=null)
     	{
-    	//»ñÈ¡ÉÌÆ·id¡¢ÊýÁ¿
+    	//ï¿½ï¿½È¡ï¿½ï¿½Æ·idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	String id =req.getParameter("id");
     	String count=req.getParameter("count");
-    	//Éú³É¹ºÎïÏî
+    	//ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½
     	CartItem ct=new CartItem();
     	ProductDao pd =new ProductDaoImpl();
     	Product product=pd.getProById(id);
     	ct.setProduct(product);
     	ct.setCount(Integer.valueOf(count));
-    	//½«¹ºÎïÏî¼ÓÈë¹ºÎï³µ
+    	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¹ºï¿½ï³µ
     	Cart cart;
     	if(req.getSession().getAttribute("cart")==null){
     	cart=new Cart();
-    	//½«¹ºÎï³µ·ÅÈësessionÓòÖÐ
+    	//ï¿½ï¿½ï¿½ï¿½ï¿½ï³µï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
     	req.getSession().setAttribute("cart", cart);
     	}
     	else
     	cart=(Cart) req.getSession().getAttribute("cart");	
     	cart.add2Cart(ct);
-    	//ÖØ¶¨Ïòµ½cart.jsp ¡£¡£ÒòÎªrequestÖÐÎÞÊý¾Ý
+    	//ï¿½Ø¶ï¿½ï¿½ï¿½cart.jsp ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªrequestï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	try
 		{
 			resp.sendRedirect(req.getContextPath()+"/cart/cart.jsp");
@@ -67,4 +67,8 @@ public class CartServlet extends BaseServlet {
     	}
     	return null;
     }
+
+	public String watchCart(HttpServletRequest req, HttpServletResponse resp) {
+       return "cart/cart.jsp";
+	}
 }

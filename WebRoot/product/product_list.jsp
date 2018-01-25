@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <%@include file="/comp/head.jsp"%>
+   <%@include file="/function/main.jsp"%>
    <!-- 以表格的形式做一个展示 -->
    <c:forEach items="${pb.proAll}" var="lpb">
       <p align="center">商品名称：<a href="${pageContext.request.contextPath }/product?method=getProById&id=${lpb.id}">${lpb.describe}</a><br></p>

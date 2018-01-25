@@ -10,7 +10,7 @@ public class ConnectToMysql
 {
 	private static String url = "jdbc:mysql://localhost:3306/store?autoReconnect=true&useSSL=false";
 	private static String username = "root";
-	private static String password = "717823";
+	private static String password = "";
 	static Connection conn;
 	static PreparedStatement prepstat;
 

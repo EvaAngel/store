@@ -11,48 +11,48 @@ import com.store.util.SendJavaMailUtil;
 public class UserServiceImpl implements UserService
 {
 	/*
-	 * Íê³É×¢²áÒµÎñÂß¼­
+	 * ï¿½ï¿½ï¿½×¢ï¿½ï¿½Òµï¿½ï¿½ï¿½ß¼ï¿½
 	 */
 	public void regist(User user)
 	{
-		// µ÷ÓÃdao²ãÍê³É×¢²á
+		// ï¿½ï¿½ï¿½ï¿½daoï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
 		UserDao ud = new UserDaoImpl();
 		ud.insert(user);
-		// ·¢ËÍ¼¤»îÓÊ¼ş
-		String test = "¸¶öÎÏÈÉúÄãºÃ, ºÜ¸ßĞËµÄÍ¨ÖªÄú£¬ÒÑ¾­±»ÎÒ¹«Ë¾ĞÉ±ãÀûÂ¼ÓÃ£¬ÈôÍ¬ÒâÂ¼ÓÃ£¬Çëµã»÷ÒÔÏÂÁ´½ÓÍê³ÉÑéÖ¤£¬<a href='http://localhost:8080/store/user?method=active&code="
-				+ user.getId() + "'>µã´ËÑéÖ¤</a>";
+		// ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
+		String test = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ü¸ï¿½ï¿½Ëµï¿½Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ò¹ï¿½Ë¾ï¿½É±ï¿½ï¿½ï¿½Â¼ï¿½Ã£ï¿½ï¿½ï¿½Í¬ï¿½ï¿½Â¼ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½<a href='http://localhost:8080/store/user?method=active&code="
+				+ user.getId() + "'>ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤</a>";
 		SendJavaMailUtil.sendMal(test);
 	}
 
 	/*
-	 * Íê³É¸ü¸ÄÒµÎñÂß¼­
+	 * ï¿½ï¿½É¸ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ß¼ï¿½
 	 */
 	public void changeStatus(String code)
 	{
-		// µ÷ÓÃdao²ãÍê³É¸ü¸Ä
+		// ï¿½ï¿½ï¿½ï¿½daoï¿½ï¿½ï¿½ï¿½É¸ï¿½ï¿½ï¿½
 		UserDao ud = new UserDaoImpl();
 		ud.putStatusById(code);
 
 	}
 
 	/*
-	 * Íê³ÉÓÃ»§µÇÂ½ÑéÖ¤¹¦ÄÜ
+	 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Â½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
 	 */
 	public User validate(User user)
 	{
-		// dao²ã»ñÈ¡ËùÓĞµÄÓÃ»§ĞÅÏ¢£º¸Ğ¾õÕâÀïºÜºÄÊ±¼ä
+		// daoï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ğµï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ğ¾ï¿½ï¿½ï¿½ï¿½ï¿½Üºï¿½Ê±ï¿½ï¿½
 		UserDao ud = new UserDaoImpl();
 		List<User> userAll = ud.getUserAll();
-		// ±È¶ÔÓÃ»§ÃûÓëÃÜÂë
+		// ï¿½È¶ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < userAll.size(); i++)
 		{
 			if (user.getUsername().equals(userAll.get(i).getUsername())
 					&& user.getPassword().equals(userAll.get(i).getPassword()))
 			{
-               return user;
+               return userAll.get(i);
 			}
 		}
-		// ·µ»Ønull»òÕßÆ¥ÅäµÄuser
+		// ï¿½ï¿½ï¿½ï¿½nullï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½user
 		return null;
 	}
 }
